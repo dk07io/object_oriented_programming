@@ -22,5 +22,6 @@ class Instructor<Person
 	end
 end
 
-chris_greeting=Instructor.new("Chris")
-puts chris_greeting.greeting
+instructor=Instructor.new("Chris")
+puts instructor.greeting
+
