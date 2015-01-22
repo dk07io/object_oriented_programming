@@ -25,3 +25,5 @@ end
 instructor=Instructor.new("Chris")
 puts instructor.greeting
 
+student=Student.new("Cristina")
+puts student.greeting
