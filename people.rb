@@ -6,20 +6,21 @@ class Person
 	end
 
 	def greeting
-		"Hi, my name is #{name}"
+		"Hi, my name is #{@name}"
 	end
 end
 
-class Student < Person
+class Student<Person
 	def learn
 		puts "I get it!"
 	end
 end
 
-class Instructor < Person
+class Instructor<Person
 	def teach
-		puts "Everything in Ruby is an Object"
+		"Everything in Ruby is an Object"
 	end
 end
 
-
+chris_greeting=Instructor.new("Chris")
+puts chris_greeting.greeting
