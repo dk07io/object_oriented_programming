@@ -1,42 +1,46 @@
 #marsrover.rb
-rover1= (1,2,N)
+# rover1= (1,2,N)
 
-class Plateau
-	def initialize(x,y,direction)
+# class Plateau
+# 	def initialize(x,y,direction,input)
+# 		@x=x
+# 		@y=y
+# 		@direction=direction
+# 		@input=input
+# 	end
+
+# 	def initial_position
+
+# 	end
+# end
+
+class Rover
+	def initialize(x,y,direction,code)
 		@x=x
 		@y=y
 		@direction=direction
+		@code=code
 	end
 
-	def initial_position
+	def read_instruction(code)
+		code.each_char do |character|
+			if character=="L"
+				turn
+			elsif character=="M"
+				move
+			end
+	end
+
+	def move
+		(x,y+1)
+		"#{@x}+1 , {y}"
 
 	end
+
+	def turn
+	end
+
 end
 
 
-
-
-class Rover
-	attr 
-	def initialize(x,y,direction)
-		@x=x
-		@y=y
-		@direction=direction
-	end
-
-	def read_instruction(l,r,m)
-		
-
-
-	def move()
-	end
-
-	def turn()
-	end
-
-	end
-
-def 
-
-
-end	
+#rover1=Rover.new()
