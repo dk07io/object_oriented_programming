@@ -15,6 +15,7 @@
 # end
 
 class Rover
+
   attr_accessor :x, :y, :direction, :string
   
   def initialize(x = 0, y = 0, direction, string)
@@ -25,32 +26,43 @@ class Rover
   end
 
   def read_instruction
-    initial_position = @x, @y
+    initial_position = "#{@x},#{@y}"
     puts initial_position
     string.each_char do |string_character|
       
       if string_character == "L"
-        puts "L"
-        # move
+        puts "turn"
       elsif
         string_character == "R"
-        puts "R"
+        puts "turn"
       else
         string_character == "M"
-        puts "M"
-      
+        move
       end
+
     end
   end
 
-# def move
-#     case @direction 
-#     when "N"
+  def turn
 
-#     if 
+  end
 
-#   end
-# end
+  def move
+      case @direction 
+        when "N"
+          @y+=1
+        when "S"
+          @y-=1
+        when "E"
+          @x+=1
+        else "w"
+          @x-=1
+      end
+
+      puts "#{@x}, #{y}"
+  end
+
+end
   
 #   def move
 #     case @direction
