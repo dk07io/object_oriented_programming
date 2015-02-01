@@ -16,9 +16,10 @@
 
 class Rover
 
-  attr_accessor :x, :y, :direction, :string
+  # attr_accessor :x, :y, :direction, :string
   
-  def initialize(x = 0, y = 0, direction, string)
+  def initialize(rover_id, x = 0, y = 0, direction, string)
+    @rover_id = rover_id
     @x=x.to_i
     @y=y.to_i
     @direction=direction
@@ -26,7 +27,7 @@ class Rover
   end
 
   def read_instruction
-    initial_position = "#{@x}, #{@y}, #{@direction}"
+    initial_position = "I am #{@rover_id} and began at #{@x}, #{@y}, facing #{@direction}!"
     puts initial_position
     @string.each_char do |string_character|
 
@@ -38,11 +39,13 @@ class Rover
       else
         string_character == "M"
         move
-      end
-
-
+      end 
     end
+    final_position = "I am now at #{@x}, #{@y}, facing #{@direction}!"
+    puts final_position
   end
+
+
 
   def turn(string_character)
     case 
@@ -52,12 +55,12 @@ class Rover
         @direction = "S"
       when @direction == "S" && string_character == "L" || @direction == "N" && string_character == "R" 
         @direction = "E" 
-      else direction == "E" && string_character == "L" || @direction == "W" && string_character == "R" 
+      else @direction == "E" && string_character == "L" || @direction == "W" && string_character == "R" 
         @direction = "N"
     end
   
   end
-  
+
   def move
       
       case @direction 
@@ -70,11 +73,9 @@ class Rover
         else "w"
           @x-=1
       end
-
-      puts "#{@x}, #{y} #{@direction}"
   end
-
 end
+
   
 #   def move
 #     case @direction
@@ -90,5 +91,8 @@ end
 #   end
 # end
 
-rover_one = Rover.new(1,2,"N","LMLMLMLM")
+rover_one = Rover.new("Rover 1",1,2,"N","LMLMLMLMM")
 rover_one.read_instruction
+
+rover_two = Rover.new("Rover 2",3,3,"E","MMRMMRMRRM")
+puts rover_two.read_instruction
