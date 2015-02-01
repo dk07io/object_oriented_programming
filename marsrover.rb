@@ -32,11 +32,9 @@ class Rover
 
       # puts string_character
       
-      if string_character == "L"
-        turn
-      elsif
-        string_character == "R"
-        turn
+      if string_character == "L" || string_character == "R"
+        # rotation = "left"
+        turn(string_character)
       else
         string_character == "M"
         move
@@ -46,23 +44,20 @@ class Rover
     end
   end
 
-  def turn
-    if @direction == "N"
-      @direction = "W"
-    elsif @direction == "W"
-      @direction = "S"
-    elsif @direction == "S" 
-      @direction = "E"
-    else direction == "E"
-      @direction = "N"
+  def turn(string_character)
+    case 
+      when @direction == "N" && string_character == "L" || @direction == "S" && string_character == "R"
+        @direction = "W"
+      when @direction == "W" && string_character == "L" || @direction == "E" && string_character == "R"
+        @direction = "S"
+      when @direction == "S" && string_character == "L" || @direction == "N" && string_character == "R" 
+        @direction = "E" 
+      else direction == "E" && string_character == "L" || @direction == "W" && string_character == "R" 
+        @direction = "N"
     end
+  
   end
-    # case rotation
-    #   @direction == "W"
-    # when "W"
-    #   @direction == "S"
-    # when "S"
-
+  
   def move
       
       case @direction 
