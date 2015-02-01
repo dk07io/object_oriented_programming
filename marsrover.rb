@@ -26,28 +26,45 @@ class Rover
   end
 
   def read_instruction
-    initial_position = "#{@x},#{@y}"
+    initial_position = "#{@x}, #{@y}, #{@direction}"
     puts initial_position
-    string.each_char do |string_character|
+    @string.each_char do |string_character|
+
+      # puts string_character
       
       if string_character == "L"
-        puts "turn"
+        turn
       elsif
         string_character == "R"
-        puts "turn"
+        turn
       else
         string_character == "M"
         move
       end
 
+
     end
   end
 
   def turn
-
+    if @direction == "N"
+      @direction = "W"
+    elsif @direction == "W"
+      @direction = "S"
+    elsif @direction == "S" 
+      @direction = "E"
+    else direction == "E"
+      @direction = "N"
+    end
   end
+    # case rotation
+    #   @direction == "W"
+    # when "W"
+    #   @direction == "S"
+    # when "S"
 
   def move
+      
       case @direction 
         when "N"
           @y+=1
@@ -59,7 +76,7 @@ class Rover
           @x-=1
       end
 
-      puts "#{@x}, #{y}"
+      puts "#{@x}, #{y} #{@direction}"
   end
 
 end
